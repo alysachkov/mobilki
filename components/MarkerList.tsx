@@ -9,14 +9,14 @@ const getRandomColor = () => {
   return colors[randomIndex];
 };
 
-export default function MarkerList({ markers, onMarkerPress }: {
+export default function Map({ markers, onMarkerPress}: {
   markers: MarkerData[],
-  onMarkerPress: (id: number) => void
+  onMarkerPress: (id: number) => void,
 }) {
   return (
     <>
       {markers.map((marker) => (
-        <Marker
+          <Marker
           key={marker.id}
           coordinate={marker.coordinate}
           pinColor={getRandomColor()}

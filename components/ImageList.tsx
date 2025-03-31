@@ -1,29 +1,43 @@
 import React from 'react';
-import { View, Image, StyleSheet, Text } from 'react-native';
+import { View, Image, StyleSheet, Text, ActivityIndicator } from 'react-native';
 import { ImageData } from '../types';
 import { GestureHandlerRootView, TapGestureHandler } from 'react-native-gesture-handler';
+import { useDatabase } from '../contexts/DatabaseContext';
 
-export default function ImageList({ images, onDelete }: { images: ImageData[], onDelete: (id: string) => void }) {
-    if (!Array.isArray(images) || images.length == 0) {
-        return (
-          <View style={styles.noImagesContainer}>
-            <Text style={styles.noImagesText}>Нет изображений</Text>
-          </View>
-        );
-      }
+export default function ImageList({ images, onDelete }: { 
+  images: ImageData[], 
+  onDelete: (id: string) => void 
+}) {
+  const { isLoading } = useDatabase();
 
+  if (isLoading) {
     return (
-      <GestureHandlerRootView>
-          <View style={styles.container}>
-            {images.map((image) => (
-                <TapGestureHandler key={image.id} onActivated={() => onDelete(image.id)}>
-                  <Image source={{ uri: image.uri }} style={styles.image} />
-                </TapGestureHandler>
-            ))}
-          </View>
-      </GestureHandlerRootView>
+      <View style={styles.noImagesContainer}>
+        <ActivityIndicator size="large" />
+      </View>
     );
   }
+
+  if (!Array.isArray(images) || images.length === 0) {
+    return (
+      <View style={styles.noImagesContainer}>
+        <Text style={styles.noImagesText}>Нет изображений</Text>
+      </View>
+    );
+  }
+
+  return (
+    <GestureHandlerRootView>
+      <View style={styles.container}>
+        {images.map((image) => (
+          <TapGestureHandler key={image.id} onActivated={() => onDelete(image.id)}>
+            <Image source={{ uri: image.uri }} style={styles.image} />
+          </TapGestureHandler>
+        ))}
+      </View>
+    </GestureHandlerRootView>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
