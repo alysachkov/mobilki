@@ -10,8 +10,8 @@ npm install -g expo-cli
 ```
 4. Клонируйте репозиторий и перейдите в каталог проекта:
 ```bash
-git clone [(https://github.com/alysachkov/mobilki)]
-cd InteractiveMap
+git clone git@github.com:alysachkov/mobilki.git
+cd mobilki
 ```
 5. Установите зависимости:
 ```bash
