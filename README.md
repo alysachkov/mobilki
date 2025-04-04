@@ -1,50 +1,43 @@
-# Welcome to your Expo app 👋
+# Задание 3
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Инструкция по установке
 
-## Get started
-
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+1. Установите приложение Expo Go на Ваше устройство.
+2. Убедитесь, что ваше устройство и компьютер подключены к одной сети Wi-Fi.
+3. Установите Expo CLI:
 ```bash
-npm run reset-project
+npm install -g expo-cli
 ```
+4. Клонируйте репозиторий и перейдите в каталог проекта:
+```bash
+git clone git@github.com:alysachkov/mobilki.git
+cd mobilki
+```
+5. Установите зависимости:
+```bash
+npm install
+```
+6. Запустите проект:
+```bash
+npx expo start
+```
+7. Откройте Expo Go на вашем Android-устройстве
+8. Отсканируйте QR-код из терминала
+9. Добавьте маркер длительным нажатием на карту
+10. Получите уведомление при приближении к маркеру
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Описание стратегии управления уведомлениями
+1. Инициализация:
+ - При запуске приложения запрашиваются разрешения на уведомления
+ - Создаётся экземпляр NotificationManager для управления уведомлениями
+2) Отслеживание местоположения:
+ - Каждые 5 секунд проверяется местоположение пользователя
+ - Используется формула гаверсинусов для расчёта расстояния до маркеров
+3) Управление уведомлениями:
+ - Уведомление показывается, когда пользователь находится в радиусе 100 метров от маркера
+ - Для каждого маркера отправляется только одно уведомление
+ - Уведомление удаляется, когда пользователь покидает зону маркера
 
-## Learn more
+## Известные проблемы и ограничения
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Нет поддержки группировки уведомлений
