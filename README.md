@@ -19,7 +19,7 @@ npm install
 ```
 6. Запустите проект:
 ```bash
-expo start
+npx expo start
 ```
 7. Откройте Expo Go на вашем Android-устройстве
 8. Отсканируйте QR-код из терминала
