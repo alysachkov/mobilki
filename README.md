@@ -1,5 +1,11 @@
 # Задание 3
 
+
+
+https://github.com/user-attachments/assets/ec0ac63a-7fa6-4d76-93c1-554cd42ff466
+
+
+
 ## Инструкция по установке
 
 1. Установите приложение Expo Go на Ваше устройство.
